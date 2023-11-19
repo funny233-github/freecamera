@@ -8,7 +8,6 @@ __config()-> {
 
 //INIT
 global_playerdata = read_file('freecameraData','JSON');
-global_playerdata = {};
 
 if(
   global_playerdata == null,
@@ -36,25 +35,27 @@ savedata(player) -> (
 //COMMANDS
 freecamera() -> (
   player = player();
+  playername = str(player);
   if(
     //if
     player~'gamemode' == 'spectator',
+    print(global_playerdata);
     if(length(global_playerdata) == 0,_error('error:no data?!'));
     run(str('/execute in %s run tp %s %s %s %s %s %s',
-      global_playerdata:player:'dimension',
+      global_playerdata:playername:'dimension',
       player,
-      global_playerdata:player:'pos':0,
-      global_playerdata:player:'pos':1,
-      global_playerdata:player:'pos':2,
-      global_playerdata:player:'yaw',
-      global_playerdata:player:'pitch',
+      global_playerdata:playername:'pos':0,
+      global_playerdata:playername:'pos':1,
+      global_playerdata:playername:'pos':2,
+      global_playerdata:playername:'yaw',
+      global_playerdata:playername:'pitch',
     ));
     run(str('/execute in %s run gamemode %s %s',
-      global_playerdata:player:'dimension',
-      global_playerdata:player:'gamemode',
+      global_playerdata:playername:'dimension',
+      global_playerdata:playername:'gamemode',
       player,
     ));
-    print(player,format(str('bc You are change gamemode to %s!',global_playerdata:player:'gamemode'))),
+    print(player,format(str('bc You are change gamemode to %s!',global_playerdata:playername:'gamemode'))),
     //else
     savedata(player);
     run(str('/execute in %s run gamemode spectator %s',
