@@ -22,7 +22,8 @@ _error(msg) ->(
 );
 
 savedata(player) -> (
-  global_playerdata:player = {
+  name = str(player)
+  global_playerdata:name = {
     'gamemode' -> player~'gamemode',
     'dimension' -> player~'dimension',
     'pos' -> player~'pos',
