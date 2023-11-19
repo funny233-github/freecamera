@@ -39,7 +39,6 @@ freecamera() -> (
   if(
     //if
     player~'gamemode' == 'spectator',
-    print(global_playerdata);
     if(length(global_playerdata) == 0,_error('error:no data?!'));
     run(str('/execute in %s run tp %s %s %s %s %s %s',
       global_playerdata:playername:'dimension',
